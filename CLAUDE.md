@@ -10,8 +10,8 @@ SPEC.md defines behavior and module ownership. GitHub issues track the work.
 
 ## GitHub workflow
 - GitHub issues are the source of truth for tasks.
-- Each teammate works in its own git worktree under ../wispr-worktrees/<name>
-  on its own branch. Never switch branches in the main checkout.
+- Each teammate works in its own git worktree under .worktrees/<name>
+  inside this repo (never outside it) on its own branch. Never switch branches in the main checkout.
 - Only edit the directories your role owns in SPEC.md. If you need a change
   elsewhere, message that owner.
 - One PR per issue, linked with "Closes #N". Merge only after CI passes and

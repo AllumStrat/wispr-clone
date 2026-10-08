@@ -41,7 +41,12 @@ Personal dictionary, voice commands ("new line"), app-aware tone, history/replay
 - **Dev signing:** ad-hoc rebuilds change the code signature, so macOS re-prompts for Accessibility, Input Monitoring and Keychain every build. Use a stable self-signed dev certificate (ticket 1.4).
 
 ### macOS permissions
-Microphone, Accessibility (paste), Input Monitoring (Fn capture via CGEventTap). The app checks all three on launch and links to System Settings for any missing one. Note: Tauri's global-shortcut plugin cannot bind bare `Fn`; the shell uses a CGEventTap.
+Three permissions, all required for v1:
+- **Microphone:** recording.
+- **Accessibility:** text insertion (simulated Cmd+V via CGEvent post).
+- **Input Monitoring:** the global hotkey (CGEventTap listening for `Fn`/Right Option).
+
+The app checks all three on launch and links to System Settings for any missing one. Note: Tauri's global-shortcut plugin cannot bind bare `Fn`; the shell uses a CGEventTap.
 
 ## Architecture
 

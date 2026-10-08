@@ -18,8 +18,8 @@ One ticket = one GitHub issue = one PR ("Closes #N"). Owners per SPEC.md. After 
 - Note: needs repo admin; depends on 1.2 having run once so the check name exists. The repo is private: branch protection on private repos needs GitHub Pro/Team. Verify at 1.3; if unavailable, the user chooses (upgrade or make public).
 
 **1.4 Stable dev signing**
-- AC: documented script creates a self-signed code-signing cert in the login keychain; `tauri build` signs with it; permissions survive a rebuild.
-- Test: grant Accessibility, rebuild, confirm no re-prompt.
+- AC: `docs/DEV_SIGNING.md` gives step-by-step Keychain Access instructions for the user to create a self-signed code-signing certificate (name, Certificate Type: Code Signing, trust settings). `scripts/build-signed.sh` builds and signs using the cert by name (default `AllWispr Dev`, overridable via `SIGNING_IDENTITY`); it fails with a clear message if the cert is missing. Agents never create, modify or read the user's Keychain.
+- Test: user creates cert, runs the script, grants Accessibility, rebuilds, confirms no re-prompt. Script tested for the missing-cert error path without touching the Keychain (`security find-identity` read-only is the only check, run by the script on the user's machine).
 
 **Manual checklist:** app builds locally, window opens, CI is green, push to main is blocked.
 
