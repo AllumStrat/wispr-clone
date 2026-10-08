@@ -1,0 +1,12 @@
+{
+  "model": "sonnet",
+  "advisorModel": "opus",
+  "env": { "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1" },
+  "permissions": {
+    "allow": ["Edit", "Write", "Bash(cargo:*)", "Bash(npm:*)", "Bash(npx:*)",
+              "Bash(git:*)", "Bash(gh:*)"],
+    "deny": ["Bash(git push --force:*)", "Bash(git push -f:*)",
+             "Bash(gh repo delete:*)", "Bash(rm -rf:*)"],
+    "additionalDirectories": ["../wispr-worktrees"]
+  }
+}
