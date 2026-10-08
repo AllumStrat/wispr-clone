@@ -8,5 +8,11 @@
     "deny": ["Bash(git push --force:*)", "Bash(git push -f:*)",
              "Bash(gh repo delete:*)", "Bash(rm -rf:*)"],
     "additionalDirectories": ["../wispr-worktrees"]
+  },
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "allowUnsandboxedCommands": false,
+    "filesystem": { "allowWrite": ["~/.cargo", "~/.npm"] }
   }
 }
